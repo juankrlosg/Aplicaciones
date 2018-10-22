@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="<?php echo URL; ?>login">Califas</a>
+  <a class="navbar-brand" href="#">Califas</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -19,7 +19,6 @@
         <?php } ?>
         </div>
       </li>
-      <?php } ?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Materias</a>
         <div class="dropdown-menu" aria-labelledby="dropdown02">
@@ -34,9 +33,14 @@
           <a class="dropdown-item" href="#">Aprobacion</a>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo URL; ?>login/logout">Logout</a>
+      </li>
+    <?php } else { ?>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo URL; ?>login">Login</a>
+      </li>
+    <?php } ?>
     </ul>
-    <li class="nav-item">
-      <a class="nav-link" href="<?php echo URL; ?>login/logout">Logout</a>
-    </li>
   </div>
 </nav>

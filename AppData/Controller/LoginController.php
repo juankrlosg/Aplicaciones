@@ -30,6 +30,63 @@
 		public function logout(){
 			session_destroy();
 		}
+		public function registrar(){
+			$datos[0]=$this->login->getSex();
+			$datos[1]=$this->login->getTiUs();
+			return $datos;
+		}
+		public function guardar(){
+			if(isset($_POST)){
+				$this->login->set("nombre",$_POST['nombre']);
+				$this->login->set("ap_p",$_POST['ap_p']);
+				$this->login->set("ap_m",$_POST['ap_m']);
+				$this->login->set("edad",$_POST['edad']);
+				$this->login->set("id_sexo",$_POST['id_sexo']);
+				$this->login->set("id_tipo_usuario",$_POST['id_tipo_usuario']);
+				$this->login->set("nickname",$_POST['nickname']);
+				$this->login->set("contraseña",$_POST['contraseña']);
+				$this->login->guardar();
+				$dato=$this->login->getOne();
+				if (mysqli_num_rows($dato) > 0) { ?>
+					<script type="text/javascript">
+					$(document).ready(function(){
+						swal({
+							title : " ",
+							text : "\nGuardado correctamente",
+							closeOnCancel :  false,
+							closeOnConfirm : false,
+							showCancelButton: false,
+							showConfirmButton: false,
+							timer : 2000
+						});
+						setTimeout(function(){
+							window.location.href = "<?php echo URL?>login";
+						},2100)
+					})
+					</script>
+					<?php
+				}
+			}
+		}
+		public function registro(){
+
+		}
+		public function guarda(){
+			if(isset($_POST)){
+				$this->login->set("nombre",$_POST['nombre']);
+				$this->login->set("ap_p",$_POST['ap_p']);
+				$this->login->set("ap_m",$_POST['ap_m']);
+				$this->login->set("edad",$_POST['edad']);
+				$this->login->set("id_sexo",$_POST['id_sexo']);
+				$this->login->set("id_tipo_usuario",$_POST['id_usuario']);
+				$this->login->insertaUsuario();
+				?>
+				<script type="text/javascript">
+					window.location.href = "<?php echo URL?>login";
+				</script>
+				<?php
+			}
+		}
 		function __destruct(){
 
 		}
