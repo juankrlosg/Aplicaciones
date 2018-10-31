@@ -22,7 +22,7 @@
           <td scope="col"></td>
           <td scope="col"></td>
           <th scope="col"><button class="btn btn-success editar" id="<?php echo $fila['id_usuario'] ?>">Editar</button> </th>
-          <th scope="col"><a class="btn btn-danger" id="<?php echo URL ?>Calificaciones/eliminar/<?php echo $fila['id_usuario'] ?>">Eliminar</button> </th>
+          <th scope="col"><a class="" href="<?php echo URL ?>Calificaciones/eliminar/<?php echo $fila['id_usuario'] ?>">Eliminar</button> </th>
         </tr>
         <?php } ?>
       </tbody>
@@ -37,17 +37,32 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Editando</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close"
+              data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body contenido">
-        <form class="form-signin" action="" method="post">
-          <input type="text" class="form-control" id="nombre"></input>
-          <input type="text" class="form-control" id="app"></input>
-          <input type="text" class="form-control" id="apm"></input>
+      <div class="modal-body">
+        <form class="form-signin" action="" method="post" id="actualizacion">
+          <input type="text" hidden name="id" id="id" value="">
+          <div class="form-group">
+            <input type="text" class="form-control"
+              id="nombre" name="nombre"></input>
+            <label for="nombre">Nombre</label>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control"
+              id="ap_p" name="ap_p"></input>
+            <label for="ap_p">Apellido Paterno</label>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control"
+              id="ap_m" name="ap_m"></input>
+              <label for="ap_m">Apellido Materno</label>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Actualizar</button>
+        <button type="button" class="btn btn-success actualiza"
+          data-dismiss="modal">Actualizar</button>
       </div>
     </div>
   </div>
@@ -59,11 +74,18 @@
       $.post("<?php echo URL ?>Calificaciones/get/"+id,{},function(data){
         if(data){
           data=JSON.parse(data)
+          $("#id").val(data['id_usuario'])
           $("#nombre").val(data['nombre'])
-          $("#app").val(data['ap_p'])
-          $("#apm").val(data['ap_m'])
+          $("#ap_p").val(data['ap_p'])
+          $("#ap_m").val(data['ap_m'])
           $("#myModal").modal('show');
         }
+      })
+    })
+    $(".actualiza").click(function(){
+      var arreglo=$("#actualizacion").serializeArray();
+      $.post("<?php echo URL ?>Calificaciones/edit/",{arreglo:arreglo},function(data){
+        window.location.href="<?php echo URL ?>Calificaciones/ver";
       })
     })
   })

@@ -1,6 +1,6 @@
 <?php namespace AppData\Model;
 	class Calificaciones {
-		private $id;
+		private $id, $nombre, $ap_p, $ap_m;
     public function __construct() {
         $this->conexion= new conexion();
 		}
@@ -36,6 +36,10 @@
 						ORDER BY p.ap_p ASC";
 			$datos=$this->conexion->QueryResultado($sql);
 			return $datos;
+		}
+		public function updatePer(){
+			$sql="UPDATE persona SET nombre='{$this->nombre}', ap_p='{$this->ap_p}', ap_m='{$this->ap_m}' WHERE id_usuario='$this->id'";
+			$this->conexion->QuerySimple($sql);
 		}
 	}
 ?>
