@@ -12,7 +12,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Calificaciones</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Ver</a>
+          <a class="dropdown-item" href="<?php echo URL ?>Calificaciones/ver">Ver</a>
           <?php if($_SESSION['id_tipo_usuario']==2){ ?>
           <a class="dropdown-item" href="#">Acentar</a>
           <a class="dropdown-item" href="#">Modificar</a>

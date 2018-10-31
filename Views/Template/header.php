@@ -13,6 +13,7 @@
     <!-- Custom styles for this template -->
     <link href="<?php echo URL ?>Public/css/signin.css" rel="stylesheet">
     <script src="<?php echo URL ?>Public/js/jquery.js"></script>
+    <!-- <script src="<?php echo URL ?>Public/js/modal.js" type="text/javascript"></script> -->
     <script type="text/javascript" src="<?php echo URL ?>Public/js/jquery.validate.min.js">
 
     </script>
