@@ -47,11 +47,6 @@
 			$this->calificaciones->set("ap_p",$data[2]['value']);
 			$this->calificaciones->set("ap_m",$data[3]['value']);
 			$this->calificaciones->updatePer();
-			?>
-			<script type="text/javascript">
-				
-			</script>
-			<?php
 		}
 
 		function __destruct(){
